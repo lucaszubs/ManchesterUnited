@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8"/>
+      <title>Manchester United</title>
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@800&display=swap" rel="stylesheet">
+      <style type="text/css">
+         *{
+         margin: 0;
+         padding: 0;
+         font-family: 'Alegreya Sans SC', sans-serif;
+         }
+         .container{
+         max-width: 2160px;
+         margin: 0 auto;
+         }
+         .header{
+         background: url("https://zubs.s-ul.eu/4xdPJC7c");
+         background-repeat: no-repeat;
+         background-color: red;
+         height: 204px;
+         border-style: solid;
+         border-color: darkred;  
+         }
+         .header::after{
+         content: " ";
+         clear: both;
+         display: block;
+         }
+         .nav ul li{
+         display: inline-block;
+         }
+         .nav ul li a{
+         padding: 0px 75px;
+         text-decoration: none;
+         color: white;
+         text-shadow: 1px 1px 2px #000000;
+         line-height: 335px;
+         }
+         .nav ul li a:hover{
+         color: darkred; 
+         }
+         .logo{
+         float: left;
+         }
+         body{
+         background: url("https://zubs.s-ul.eu/g7DDEWQC");
+         }
+         h1{
+         color: white;
+         font-size: 50px
+         }
+         p{
+         color: white;
+         font-size: 25px
+         }
+         .tekst{
+         text-align: center
+         }
+         #fergie{
+         border-style: solid;
+         border-color: darkred;  
+         }
+      </style>
+   </head>
+   <body>
+      <!-- The core Firebase JS SDK is always required and must be listed first -->
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-database.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/7.12.0/firebase-auth.js"></script>
+      <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+      <script>
+         // Your web app's Firebase configuration
+         var firebaseConfig = {
+           apiKey: "AIzaSyBVKsxHtVswW0w6zb6BAP1BYZzqc26yM2Y",
+           authDomain: "manchester-united-f7a1f.firebaseapp.com",
+           databaseURL: "https://manchester-united-f7a1f.firebaseio.com",
+           projectId: "manchester-united-f7a1f",
+           storageBucket: "manchester-united-f7a1f.appspot.com",
+           messagingSenderId: "723302052227",
+           appId: "1:723302052227:web:d140b9cb5c0c3e2c22c6b6"
+         };
+         // Initialize Firebase
+         firebase.initializeApp(firebaseConfig);
+           let db = firebase.database ();
+           let ManU = db.ref("ManU")
+           function submit_data(){
+               let navn_in = document.getElementById('navn').value;
+               let minnet_in = document.getElementById('minnet').value;
+               let naar_in = document.getElementById('naar').value;
+               ManU.push({
+         navn : navn_in,
+         minnet : minnet_in,
+         naar : naar_in,
+               });
+                               window.alert("Minnet ditt er lagt til vår database!")
+           }
+      </script>
+      <header class="header">
+         <div class="container">
+            <img src="https://zubs.s-ul.eu/q5EifQSB" width="200" class="logo">
+            <nav class="nav">
+               <ul>
+                  <li style="font-size: 25px;"><a href="index.html">Hjem</a></li>
+                  <li style="font-size: 25px;"><a href="trener.html">Trener</a></li>
+                  <li style="font-size: 25px;"><a href="historie.html">Historie</a></li>
+                  <li style="font-size: 25px;"><a href="stadion.html">Stadion</a></li>
+                  <li style="font-size: 25px;"><a href="minner.html">Del dinne minner</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+      <div class="tekst">
+         <br>
+         <br>
+         <h1>Her kan du skrive ned dine favoritte minner om Man U!</h1>
+         <br>
+         <input type="text" id="navn" placeholder="Ditt navn"><br>
+         <input type="text" id="minnet" placeholder="Minnet"><br>
+         <input type="text" id="naar" placeholder="Når"><br>
+         <input type="button" onclick="submit_data()" value="Send inn">
+         <br>
+         <img src="https://resources.platform.pulselive.com/premierleague/photo/2016/06/08/dc8bf535-caf9-476a-ac93-378004a334ba/GettyImages-168611936.jpg" width="1280" id="fergie">
+      </div>
+   </body>
+</html>
